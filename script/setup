@@ -9,12 +9,15 @@ brew bundle check || brew bundle
 # Prepare custom settings for Karabiner-Elements
 mkdir -p ~/.config/karabiner/
 ln -sf $PWD/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+echo "karabiner symlinked"
 
 # Prepare custom settings for Hammerspoon
 ln -sfn $PWD/hammerspoon ~/.hammerspoon
+echo "hammerspoon symlinked"
 
 # Prepare custom settings for navigating between words in iTerm2
 grep -sq forward-word ~/.inputrc || cat $PWD/inputrc >> ~/.inputrc
+
 
 # Disable Dock icon for Hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJShowDockIconKey -bool FALSE
