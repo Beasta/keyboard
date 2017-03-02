@@ -1,8 +1,10 @@
 #!/bin/sh
 
 set -e
+echo "set -e"
 
 which -s brew || (echo "Homebrew is required: http://brew.sh/" && exit 1)
+echo "homebrew is installed"
 
 brew bundle check || brew bundle
 

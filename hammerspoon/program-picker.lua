@@ -1,3 +1,15 @@
+-- Keybindings for launching apps in Hyper Mode
+hyperModeAppMappings = {
+  { 'a', 'iTunes' },                -- "A" for "Apple Music"
+  { 'b', 'Google Chrome' },         -- "B" for "Browser"
+  { 'c', 'Hackable Slack Client' }, -- "C for "Chat"
+  { 'd', 'Remember The Milk' },     -- "D" for "Do!" ... or "Done!"
+  { 'e', 'Atom Beta' },             -- "E" for "Editor"
+  { 'f', 'Finder' },                -- "F" for "Finder"
+  { 'g', 'Mailplane 3' },           -- "G" for "Gmail"
+  { 't', 'iTerm' },                 -- "T" for "Terminal"
+}
+
 function wrapSelectedText(wrapCharacters)
   -- Preserve the current contents of the system clipboard
   local originalClipboardContents = hs.pasteboard.getContents()
@@ -25,25 +37,25 @@ end
 
 function inlineLink()
   -- Fetch URL from the system clipboard
-  local linkUrl = hs.pasteboard.getContents()
+  -- local linkUrl = hs.pasteboard.getContents()
 
   -- Copy the currently-selected text to use as the link text
-  keyUpDown('cmd', 'c')
+  -- keyUpDown('cmd', 'c')
 
   -- Allow some time for the command+c keystroke to fire asynchronously before
   -- we try to read from the clipboard
   hs.timer.doAfter(0.2, function()
     -- Construct the formatted output and paste it over top of the
     -- currently-selected text
-    local linkText = hs.pasteboard.getContents()
-    local markdown = '[' .. linkText .. '](' .. linkUrl .. ')'
-    hs.pasteboard.setContents(markdown)
-    keyUpDown('cmd', 'v')
+    -- local linkText = hs.pasteboard.getContents()
+    -- local markdown = '[' .. linkText .. '](' .. linkUrl .. ')'
+    -- hs.pasteboard.setContents(markdown)
+    -- keyUpDown('cmd', 'v')
 
     -- Allow some time for the command+v keystroke to fire asynchronously before
     -- we restore the original clipboard
     hs.timer.doAfter(0.2, function()
-      hs.pasteboard.setContents(originalClipboardContents)
+      -- hs.pasteboard.setContents(originalClipboardContents)
     end)
   end)
 end
@@ -63,7 +75,7 @@ end
 --        from the clipboard ("l" for "link")
 --------------------------------------------------------------------------------
 
-windowChangerMode = hs.hotkey.modal.new({}, 'F21')
+windowChangerMode = hs.hotkey.modal.new({}, 'F19')
 
 local message = require('status-message')
 markdownMode.statusMessage = message.new('Window-Changer Mode (control-a)')

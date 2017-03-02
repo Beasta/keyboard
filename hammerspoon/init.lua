@@ -35,7 +35,7 @@ require('delete-words')
 require('hyper')
 require('markdown')
 require('panes')
-require('proogram-picker')
+require('program-picker')
 require('super')
 require('windows')
 
